@@ -2,7 +2,7 @@
 CPS 510 Database Web UI
 
 ## Preamble
-This project is a web application that allows users to interact with a Oracle database with populated data. The application will be built using Python and Flask, with SQLAlchemy as the ORM.
+This project is a web application that allows users to interact with an Oracle database with populated data. The application will be built using Python and Flask, with SQLAlchemy as the ORM.
 
 ## User Requirements
 The user will be able to:
