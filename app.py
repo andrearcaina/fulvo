@@ -1,9 +1,12 @@
 from flask import Flask, render_template
-from routes.player_bp import player_bp
+from routes.blueprints import register_blueprints
 
 app = Flask(__name__)
 
-app.register_blueprint(player_bp, url_prefix="/player")
+if register_blueprints(app):
+    print(" * Blueprints registered successfully.")
+else:
+    raise Exception("Failed to register blueprints.")
 
 @app.route("/")
 def index():
