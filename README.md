@@ -1,5 +1,16 @@
 # fulvo
-CPS 510 web UI  
+CPS 510 Database Web UI
+
+## Preamble
+This project is a web application that allows users to interact with a Oracle database with populated data. The application will be built using Python and Flask, with SQLAlchemy as the ORM.
+
+## User Requirements
+The user will be able to:
+
+1. view all the tables in our database
+2. click on buttons that essentially does SQL queries (for example, select all that are skill level advanced)
+3. be able to create, read, update, and delete records
+4. be able to search for specific records
 
 ## Installation Process
 
