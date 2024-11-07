@@ -1,6 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from models.user import User
-import bcrypt
 
 class Player(User):
     __tablename__ = "players"

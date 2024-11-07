@@ -1,6 +1,5 @@
 from sqlalchemy import Column, Integer, String, Date
 from sqlalchemy.ext.declarative import declarative_base
-import bcrypt
 
 Base = declarative_base()
 
@@ -21,12 +20,6 @@ class User(Base):
         self.last_name = last_name
         self.age = age
         self.email_address = email_address
-        self.password = self.hash_password(password)
+        self.password = password
         self.date_of_birth = date_of_birth
         self.role = role
-
-    def hash_password(self, password):
-        return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
-
-    def check_password(self, password):
-        return bcrypt.checkpw(password.encode("utf-8"), self.password.encode("utf-8"))
