@@ -4,7 +4,7 @@ from models.user import User
 class Referee(User):
     __tablename__ = "referees"
 
-    referee_id = Column(Integer, ForeignKey("users.user_id"), index=True, autoincrement=True)
+    referee_id = Column(Integer, ForeignKey("users.user_id"), nullable=False)
     experience_level = Column(String(50))
 
     def __init__(self, first_name, last_name, age, role, experience_level):

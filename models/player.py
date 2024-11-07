@@ -5,8 +5,8 @@ import bcrypt
 class Player(User):
     __tablename__ = "players"
 
-    player_id = Column(Integer, ForeignKey("users.user_id"), index=True, autoincrement=True)
-    team_id = Column(Integer, ForeignKey("team.team_id"), nullable=False)
+    player_id = Column(Integer, ForeignKey("users.user_id"), nullable=False)
+    team_id = Column(Integer, ForeignKey("team.team_id"))
     position = Column(String(50), nullable=False)
     skill_level = Column(String(50), nullable=False)
 
