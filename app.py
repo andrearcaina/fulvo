@@ -1,12 +1,28 @@
-from flask import Flask, render_template
+from flask import Flask, g, render_template
+from config import Config
+from database import db, init_db
 from routes.blueprints import register_blueprints
 
 app = Flask(__name__)
 
-if register_blueprints(app):
-    print(" * Blueprints registered successfully.")
-else:
-    raise Exception("Failed to register blueprints.")
+# load the configuration from the Config class in config.py into the app
+app.config.from_object(Config)
+
+# initialize the database with the app and register the blueprints (routes) of the app
+try:
+    init_db(app)
+    register_blueprints(app)
+except Exception as e:
+    print(f"An error occurred: {e}")
+
+@app.before_request
+def before_request():
+    g.db = db.session
+
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    if hasattr(g, "db"):
+        g.db.close()
 
 @app.route("/")
 def index():

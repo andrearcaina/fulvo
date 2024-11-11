@@ -1,16 +1,13 @@
-from sqlalchemy import Column, Integer, ForeignKey, PrimaryKeyConstraint
-from sqlalchemy.ext.declarative import declarative_base
+from database import db
 
-Base = declarative_base()
-
-class Match_Referee(Base):
+class Match_Referee(db.Model):
     __tablename__ = "match_referee"
 
-    match_id = Column(Integer, ForeignKey("house_league.match_id"), nullable=False)
-    referee_id = Column(Integer, ForeignKey("players.referee_id"), nullable=False)
+    match_id = db.Column(db.Integer, db.ForeignKey("house_league.match_id"), nullable=False)
+    referee_id = db.Column(db.Integer, db.ForeignKey("players.referee_id"), nullable=False)
     
     __table_args__ = (
-        PrimaryKeyConstraint("match_id", "player_id"),
+        db.PrimaryKeyConstraint("match_id", "player_id"),
     )
 
     def __init__(self, match_id, referee_id):

@@ -1,14 +1,11 @@
-from sqlalchemy import Column, Integer, String, Date
-from sqlalchemy.ext.declarative import declarative_base
+from database import db
 
-Base = declarative_base()
-
-class User(Base):
+class User(db.Model):
     __tablename__ = "team"
 
-    team_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    team_name = Column(String(100), nullable=False)
-    skill_level = Column(String(100), nullable=False)
+    team_id = db.Column(db.Integer, primary_key=True, index=True, autoincrement=True)
+    team_name = db.Column(db.String(100), nullable=False)
+    skill_level = db.Column(db.String(100), nullable=False)
 
     def __init__(self, team_name, skill_level):
         self.team_name = team_name

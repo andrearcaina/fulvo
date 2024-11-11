@@ -1,18 +1,15 @@
-from sqlalchemy import Column, Integer, String, Date, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
+from database import db
 
-Base = declarative_base()
-
-class House_League(Base):
+class House_League(db.Model):
     __tablename__ = "house_league"
 
-    match_id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-    match_date = Column(Date, nullable=False)
-    skill_level = Column(String(20), nullable=False)
-    ht_id = Column(Integer, ForeignKey("teams.team_id"), nullable=False)
-    at_id = Column(Integer, ForeignKey("teams.team_id"), nullable=False)
-    ht_score = Column(Integer, nullable=False)
-    at_score = Column(Integer, nullable=False)
+    match_id = db.Column(db.Integer, primary_key=True, index=True, autoincrement=True)
+    match_date = db.Column(db.Date, nullable=False)
+    skill_level = db.Column(db.String(20), nullable=False)
+    ht_id = db.Column(db.Integer, db.ForeignKey("teams.team_id"), nullable=False)
+    at_id = db.Column(db.Integer, db.ForeignKey("teams.team_id"), nullable=False)
+    ht_score = db.Column(db.Integer, nullable=False)
+    at_score = db.Column(db.Integer, nullable=False)
 
     def __init__(self, match_date, skill_level, ht_id, at_id, ht_score, at_score):
         self.match_date = match_date
