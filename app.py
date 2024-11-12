@@ -1,7 +1,7 @@
 from flask import Flask, g, render_template
 from config import Config
 from database import db, init_db
-from routes.blueprints import register_blueprints
+from views.blueprints import register_blueprints, render_views
 
 app = Flask(__name__)
 
@@ -13,6 +13,7 @@ app.json.sort_keys = False # set json to not sort keys
 try:
     init_db(app)
     register_blueprints(app)
+    render_views(app)
 except Exception as e:
     print(f"An error occurred: {e}")
 
@@ -24,10 +25,6 @@ def before_request():
 def shutdown_session(exception=None):
     if hasattr(g, "db"):
         g.db.close()
-
-@app.route("/")
-def index():
-    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

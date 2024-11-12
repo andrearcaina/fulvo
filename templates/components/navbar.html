@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Fulvo Database</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('user_table') }}">Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('player_table') }}">Players</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('referee_table') }}">Referees</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('team_table') }}">Teams</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('house_league_table') }}">House League</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('match_stats_table') }}">Match Stats</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('match_referee_table') }}">Match Referees</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

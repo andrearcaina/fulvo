@@ -15,19 +15,23 @@
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </head>
 <body>
-    <h1 class="text-center mt-3"> Fulvo Database </h1>
-    <div class="container text-center mt-3">
-        <button id="allUS" class="btn btn-primary" type="submit">Users Table</button>
-        <button id="allPS" class="btn btn-primary" type="submit">Players Table</button>
-        <button id="allRS" class="btn btn-primary" type="submit">Referees Table</button>
-        <button id="allTS" class="btn btn-primary" type="submit">Teams Table</button>
-        <button id="allHL" class="btn btn-primary" type="submit">House_League Table</button>
-        <button id="allMS" class="btn btn-primary" type="submit">Match_Stats Table</button>
-        <button id="allMR" class="btn btn-primary" type="submit">Match_Referee Table</button>
+    {% include "components/navbar.html" %}
+
+    <h1 class="text-center mt-3"> 
+        {% block heading %} 
+        {% endblock %}  
+    </h1>
+
+    <div>
+        {% block preamble %}
+        {% endblock %}
     </div>
 
-    <div id="buttonOutput" class="m-5"></div>
+    <div>
+        {% block content %}
+        {% endblock %}
+    </div>
 
-    <div id="CRUDOperations" class="m-5"></div>
+    {% include "components/footer.html" %}
 </body>
 </html>

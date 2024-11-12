@@ -1,0 +1,53 @@
+{% extends "components/base.html" %}
+
+{% block heading %}
+Fulvo (Fútbol) Database
+{% endblock %}
+
+{% block preamble %}
+<div class="container mt-3">
+    <p>
+        Welcome to the Fulvo Database Web UI. 
+        This is a web application that allows users to interact with an Oracle database with populated (fake) data.
+        The database consists of seven different tables: Users, Players, Referees, Teams, House_League, Match_Stats, and Match_Referee.
+        Each table has its own unique attributes and relationships with other tables.
+    </p> 
+    
+    <h3> Application Details </h3>
+    <p>
+        The database was created using PL/SQL (Oracle SQL), with separate SQL scripts for creating, populating, and querying. 
+        We executed these scripts with Oracle SQL*Plus and Oracle SQL Developer.
+        As for the web interface, we decided to use Python and Flask as our backend framework, with SQLAlchemy as the ORM (Object Relational Mapper).
+        We also used Jinja2 as our a templating engine (as it comes with Flask), 
+        and jQuery is utilized in the frontend for interacting with the backend and adding functionality.
+        As for our styling, we combined custom CSS and Bootstrap to create a clean and simple design.
+    </p>
+    
+    <h3> User Requirements </h3>
+    <ol>
+        <li>Perform certain SQL queries (for example, select all that are skill level advanced)</li>
+        <li>Create, read, update, and delete records for each table</li>
+        <li>Search for specific records for each table</li>
+    </ol>
+    <p>Click on each item on the navbar to be able to visualize these requirements.</p>
+    
+    <h3> Quick Database Overview </h3>
+    <p>To look at each table in the Fulvo Database, select the corresponding button to see the corresponding table.</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <button id="allUS" class="btn btn-primary" type="submit">Users Table</button>
+    <button id="allPS" class="btn btn-primary" type="submit">Players Table</button>
+    <button id="allRS" class="btn btn-primary" type="submit">Referees Table</button>
+    <button id="allTS" class="btn btn-primary" type="submit">Teams Table</button>
+    <button id="allHL" class="btn btn-primary" type="submit">House_League Table</button>
+    <button id="allMS" class="btn btn-primary" type="submit">Match_Stats Table</button>
+    <button id="allMR" class="btn btn-primary" type="submit">Match_Referee Table</button>
+</div>
+
+<div id="buttonOutput" class="m-5"></div>
+
+<div id="CRUDOperations" class="m-5"></div>
+{% endblock %}
