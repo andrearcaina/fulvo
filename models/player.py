@@ -1,16 +1,22 @@
 from database import db
-from models.user import User
 
-class Player(User):
+class Player(db.Model):
     __tablename__ = "players"
 
-    player_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), nullable=False)
-    team_id = db.Column(db.Integer, db.ForeignKey("team.team_id"))
-    position = db.Column(db.String(50), nullable=False)
-    skill_level = db.Column(db.String(50), nullable=False)
+    player_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), primary_key=True)
+    team_id = db.Column(db.Integer, db.ForeignKey("teams.team_id"))
+    position = db.Column(db.String(20), nullable=False)
+    skill_level = db.Column(db.String(20), nullable=False, default="beginner")
 
-    def __init__(self, first_name, last_name, age, team_id, role, position, skill_level):
-        super().__init__(first_name, last_name, age, role)
+    def __init__(self, team_id, position, skill_level):
         self.team_id = team_id
         self.position = position
         self.skill_level = skill_level
+
+    def to_dict(self):
+        return {
+            "player_id": self.player_id,
+            "team_id": self.team_id,
+            "position": self.position,
+            "skill_level": self.skill_level
+        }

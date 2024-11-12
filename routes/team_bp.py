@@ -1,6 +1,6 @@
 from flask import Blueprint
-from controllers.team_controller import index
+from controllers.team_controller import listAllTeams
 
 team_bp = Blueprint("team_bp", __name__)
 
-team_bp.route("/", methods=["GET"])(index)
+team_bp.route("/read", methods=["GET"])(listAllTeams)

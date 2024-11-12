@@ -18,8 +18,19 @@ class House_League(db.Model):
         self.at_id = at_id
         self.ht_score = ht_score
         self.at_score = at_score
-        self.validate_teams()
+        self.__validate_teams()
 
-    def validate_teams(self):
+    def __validate_teams(self):
         if self.ht_id == self.at_id:
             raise ValueError("Home team ID and away team ID cannot be the same")
+        
+    def to_dict(self):
+        return {
+            "match_id": self.match_id,
+            "match_date": self.match_date.strftime("%Y-%m-%d"),
+            "skill_level": self.skill_level,
+            "ht_id": self.ht_id,
+            "at_id": self.at_id,
+            "ht_score": self.ht_score,
+            "at_score": self.at_score
+        }

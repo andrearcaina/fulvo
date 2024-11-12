@@ -1,6 +1,6 @@
 from flask import Blueprint
-from controllers.player_controller import index
+from controllers.player_controller import listAllPlayers
 
 player_bp = Blueprint("player_bp", __name__)
 
-player_bp.route("/", methods=["GET"])(index)
+player_bp.route("/read", methods=["GET"])(listAllPlayers)

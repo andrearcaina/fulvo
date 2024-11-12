@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 # load the configuration from the Config class in config.py into the app
 app.config.from_object(Config)
+app.json.sort_keys = False # set json to not sort keys
 
 # initialize the database with the app and register the blueprints (routes) of the app
 try:

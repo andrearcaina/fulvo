@@ -3,7 +3,7 @@ from database import db
 class User(db.Model):
     __tablename__ = "users"
 
-    user_id = db.Column(db.Integer, primary_key=True, index=True, autoincrement=True)
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     first_name = db.Column(db.String(50), nullable=False)
     last_name = db.Column(db.String(50), nullable=False)
     age = db.Column(db.Integer, nullable=False)
@@ -21,7 +21,6 @@ class User(db.Model):
         self.date_of_birth = date_of_birth
         self.role = role
 
-    # serialize the object to a JSON format
     def to_dict(self):
         return {
             "user_id": self.user_id,
@@ -30,6 +29,6 @@ class User(db.Model):
             "age": self.age,
             "email_address": self.email_address,
             "password": self.password,
-            "date_of_birth": self.date_of_birth,
+            "date_of_birth": self.date_of_birth.strftime("%Y-%m-%d"),
             "role": self.role
         }

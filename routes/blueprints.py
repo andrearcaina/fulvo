@@ -14,5 +14,3 @@ def register_blueprints(app):
     app.register_blueprint(ms_bp, url_prefix="/match-stats")
     app.register_blueprint(mr_bp, url_prefix="/match-referees")
     app.register_blueprint(hl_bp, url_prefix="/house-league")
-
-    return True
