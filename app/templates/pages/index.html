@@ -6,21 +6,27 @@ Fulvo (Fútbol) Database
 
 {% block preamble %}
 <div class="container mt-3">
+    <h3> Introduction </h3>
     <p>
-        Welcome to the Fulvo Database Web UI. 
-        This is a web application that allows users to interact with an Oracle database with populated (fake) data.
-        The database consists of seven different tables: Users, Players, Referees, Teams, House_League, Match_Stats, and Match_Referee.
+        Welcome to the <b>Fulvo Database Web UI</b>. 
+        This is a <b>web application</b> that allows users to interact with an <b>Oracle database</b> with populated (fake) data.
+        The database consists of <b>seven</b> different tables: Users, Players, Referees, Teams, House_League, Match_Stats, and Match_Referee.
         Each table has its own unique attributes and relationships with other tables.
+        The goal of this assignment is for users to be able to perform <b>CRUD operations</b> on each table, as well as perform specific <b>SQL queries</b> on the database with user functionality
+        <b>Before getting started</b>, this oracle database can only be accessed with a specific <b>VPN</b> connection by Toronto Metropolitan University.
+        If you want to see this project in action, but don't have access to the VPN, please check the <a href="https://github.com/andrearcaina/fulvo/" target="_blank"><b>GitHub</b></a> 
+        README for a video demonstration, as that is the only way (that I know of) to be able to utilize this application.
+        Now let us get into the details of this application.
     </p> 
     
     <h3> Application Details </h3>
     <p>
-        The database was created using PL/SQL (Oracle SQL), with separate SQL scripts for creating, populating, and querying. 
-        We executed these scripts with Oracle SQL*Plus and Oracle SQL Developer.
-        As for the web interface, we decided to use Python and Flask as our backend framework, with SQLAlchemy as the ORM (Object Relational Mapper).
-        We also used Jinja2 as our a templating engine (as it comes with Flask), 
-        and jQuery is utilized in the frontend for interacting with the backend and adding functionality.
-        As for our styling, we combined custom CSS and Bootstrap to create a clean and simple design.
+        The database was created using <b>PL/SQL</b> (Oracle SQL), with separate SQL scripts for creating, populating, and querying. 
+        We executed these scripts with <b>Oracle SQL*Plus</b> and <b>Oracle SQL Developer</b>.
+        As for the web interface, we decided to use <b>Python</b> and <b>Flask</b> as our backend framework, with <b>SQLAlchemy</b> as our ORM (Object Relational Mapper).
+        We also used <b>Jinja2</b> as our a templating engine (as it comes with Flask), 
+        and <b>jQuery</b> is utilized in the frontend for interacting with the backend and adding functionality.
+        As for our styling, we combined custom CSS and <b>Bootstrap</b> to create a clean and simple design.
     </p>
     
     <h3> User Requirements </h3>
