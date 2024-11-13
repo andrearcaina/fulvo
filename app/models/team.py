@@ -1,4 +1,4 @@
-from server.database import db
+from app.database import db
 
 class Team(db.Model):
     __tablename__ = "teams"

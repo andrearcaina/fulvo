@@ -1,4 +1,4 @@
-from server.database import db
+from app.database import db
 
 class Match_Stats(db.Model):
     __tablename__ = "match_stats"

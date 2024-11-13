@@ -1,5 +1,5 @@
 from flask import jsonify, g
-from server.models.match_stats import Match_Stats as MS
+from app.models.match_stats import Match_Stats as MS
 
 def list_all_ms():
     ms = g.db.query(MS).all()

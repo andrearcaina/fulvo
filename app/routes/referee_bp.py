@@ -1,5 +1,5 @@
 from flask import Blueprint
-from server.controllers.referee_controller import list_all_rs
+from app.controllers.referee_controller import list_all_rs
 
 referee_bp = Blueprint("referee_bp", __name__)
 

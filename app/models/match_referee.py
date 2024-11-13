@@ -1,4 +1,4 @@
-from server.database import db
+from app.database import db
 
 class Match_Referee(db.Model):
     __tablename__ = "match_referee"

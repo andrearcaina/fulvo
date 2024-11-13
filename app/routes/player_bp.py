@@ -1,5 +1,5 @@
 from flask import Blueprint
-from server.controllers.player_controller import list_all_ps
+from app.controllers.player_controller import list_all_ps
 
 player_bp = Blueprint("player_bp", __name__)
 

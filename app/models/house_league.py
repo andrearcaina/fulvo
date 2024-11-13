@@ -1,4 +1,4 @@
-from server.database import db
+from app.database import db
 
 class House_League(db.Model):
     __tablename__ = "house_league"

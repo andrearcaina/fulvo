@@ -1,8 +1,8 @@
 from flask import Flask, g
-from server.config import Config
-from server.database import db, init_db
-from server.routes import register_blueprints
-from server.views import register_views
+from app.config import Config
+from app.database import db, init_db
+from app.routes import register_blueprints
+from app.views import register_views
 
 def init_app():
     app = Flask(__name__)

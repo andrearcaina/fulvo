@@ -1,5 +1,5 @@
 from flask import jsonify, g
-from server.models.player import Player
+from app.models.player import Player
 
 def list_all_ps():
     players = g.db.query(Player).all()

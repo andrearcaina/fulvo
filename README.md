@@ -21,7 +21,7 @@ Before installing, you will need python installed in your local machine.
 > git clone https://github.com/andrearcaina/fulvo
 
 # create a .venv
-> python3 -m venv .venv
+> python -m venv .venv
 
 # activate .venv
 > source .venv/bin/activate # with linux or macos
@@ -31,8 +31,7 @@ Before installing, you will need python installed in your local machine.
 > pip install -r requirements.txt
 
 # run app
-> py app.py
+> py run.py
 # or
-> flask run --debug
-
+> python run.py
 ```
