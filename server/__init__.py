@@ -11,8 +11,6 @@ def init_app():
     app.config.from_object(Config)
     app.json.sort_keys = False # set json to not sort keys
 
-    print(app.config["SQLALCHEMY_DATABASE_URI"])
-
     # initialize the database with the app and register the blueprints (routes) of the app
     try:
         init_db(app)
