@@ -1,7 +1,7 @@
 from flask import jsonify, g
-from models.match_referee import Match_Referee as MR
+from server.models.match_referee import Match_Referee as MR
 
-def listAllMR():
+def list_all_mr():
     mr = g.db.query(MR).all()
     mr_list = [r.to_dict() for r in mr]
 

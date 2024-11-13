@@ -1,7 +1,7 @@
 from flask import jsonify, g
-from models.user import User
+from server.models.user import User
 
-def listAllUsers():
+def list_all_us():
     users = g.db.query(User).all()
     users_list = [user.to_dict() for user in users]
 

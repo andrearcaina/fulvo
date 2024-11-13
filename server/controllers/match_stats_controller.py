@@ -1,7 +1,7 @@
 from flask import jsonify, g
-from models.match_stats import Match_Stats as MS
+from server.models.match_stats import Match_Stats as MS
 
-def listAllMS():
+def list_all_ms():
     ms = g.db.query(MS).all()
     ms_list = [m.to_dict() for m in ms]
 

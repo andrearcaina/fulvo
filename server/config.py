@@ -3,7 +3,7 @@ import os
 
 load_dotenv()
 
-class Config:
+class Config:    
     USER = os.environ.get("ORACLE_USER")
     PASSWORD = os.environ.get("ORACLE_PASS")
     HOST = os.environ.get("ORACLE_HOST")

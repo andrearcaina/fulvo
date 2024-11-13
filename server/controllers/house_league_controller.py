@@ -1,7 +1,7 @@
 from flask import jsonify, g
-from models.house_league import House_League as HL
+from server.models.house_league import House_League as HL
 
-def listAllHL():
+def list_all_hl():
     hl = g.db.query(HL).all()
     hl_list = [m.to_dict() for m in hl]
 

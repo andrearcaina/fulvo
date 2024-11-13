@@ -1,4 +1,4 @@
-from database import db
+from server.database import db
 
 class Referee(db.Model):
     __tablename__ = "referees"
