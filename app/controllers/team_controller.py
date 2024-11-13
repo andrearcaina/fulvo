@@ -1,5 +1,5 @@
 from flask import jsonify, g
-from app.models.team import Team as TS
+from app.models import Team as TS
 
 def list_all_ts():
     teams = g.db.query(TS).all()

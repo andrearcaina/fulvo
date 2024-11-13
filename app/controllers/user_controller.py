@@ -1,5 +1,5 @@
 from flask import jsonify, g
-from app.models.user import User as US
+from app.models import User as US
 
 def list_all_us():
     users = g.db.query(US).all()

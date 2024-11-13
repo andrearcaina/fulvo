@@ -1,5 +1,5 @@
 from flask import jsonify, g
-from app.models.referee import Referee as RS
+from app.models import Referee as RS
 
 def list_all_rs():
     referees = g.db.query(RS).all()

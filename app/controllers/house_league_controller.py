@@ -1,5 +1,5 @@
 from flask import jsonify, g
-from app.models.house_league import House_League as HL
+from app.models import House_League as HL
 
 # get all records
 def list_all_hl():
