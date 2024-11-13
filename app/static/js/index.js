@@ -21,11 +21,10 @@ $(document).ready(function() {
         getTableData("match-referees");
     });
 
-    function getTableData(endpoint) {
-        endpoint += "/read";
-        console.log(endpoint);
+    function getTableData(table) {
+        const ENDPOINT = "/api/" + table + "/read";
         $.ajax({
-            url: endpoint,
+            url: ENDPOINT,
             type: "GET",
             success: function(resp) {
                 console.log(resp);
