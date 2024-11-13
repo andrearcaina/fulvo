@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.controllers.user_controller import (
+from app.controllers import (
     list_all_us,
     list_us_by_id
 )

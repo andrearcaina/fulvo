@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.controllers.team_controller import (
+from app.controllers import (
     list_all_ts, list_ts_by_id
 )
 

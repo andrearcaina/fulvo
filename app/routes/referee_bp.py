@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.controllers.referee_controller import (
+from app.controllers import (
     list_all_rs,
     list_rs_by_id
 )

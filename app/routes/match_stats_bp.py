@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.controllers.match_stats_controller import (
+from app.controllers import (
     list_all_ms, 
     list_ms_by_id
 )

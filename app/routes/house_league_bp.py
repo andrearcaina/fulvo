@@ -1,5 +1,5 @@
 from flask import Blueprint
-from app.controllers.house_league_controller import (
+from app.controllers import (
     list_all_hl,
     list_hl_by_id
 ) 
