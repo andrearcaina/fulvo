@@ -38,7 +38,7 @@ $(document).ready(function() {
         let table = $("<table class='table table-bordered table-hover'></table>");
         let thead = $("<thead></thead>");
         let tbody = $("<tbody></tbody>");
-        var tr = $("<tr></tr>");
+        let tr = $("<tr></tr>");
 
         for (let key in data[0]) {
             tr.append("<th>" + key + "</th>");

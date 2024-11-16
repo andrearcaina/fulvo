@@ -9,7 +9,7 @@ def init_app():
 
     # load the configuration from the Config class in config.py into the app
     app.config.from_object(Config)
-    app.json.sort_keys = False # set json to not sort keys
+    app.json.sort_keys = app.config["JSON_SORT_KEYS"]
 
     # initialize the database with the app and register the blueprints (routes) of the app
     try:
