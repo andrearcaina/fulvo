@@ -6,6 +6,19 @@ $(document).ready(function() {
 
     // event listeners
 
+    // index.html
+    $("#dropdb").click(function() {
+        changeDatabase("drop");
+    });
+    
+    $("#createdb").click(function() {
+        changeDatabase("create");
+    });
+    
+    $("#populatedb").click(function() {
+        changeDatabase("populate");
+    });
+
     // users.html
     $("#allUS").click(function() {
         getTableData("user");
@@ -169,6 +182,22 @@ $(document).ready(function() {
             error: function(error) {
                 console.error(error);
                 $("#changeRowOutput").html("Error deleting record");
+            }
+        });
+    }
+
+    function changeDatabase(action) {
+        const ENDPOINT = "/api/menu/" + action;
+        $.ajax({
+            url: ENDPOINT,
+            type: "POST",
+            success: function(resp) {
+                console.log(resp);
+                $("#resultDB").html(resp.message);
+            },
+            error: function(error) {
+                console.error(error);
+                $("#resultDB").html("Error in changing database");
             }
         });
     }

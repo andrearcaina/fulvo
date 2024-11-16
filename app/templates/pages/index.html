@@ -15,7 +15,7 @@ Fulvo (Fútbol) Database
         The goal of this assignment is for users to be able to perform <b>CRUD operations</b> on each table, as well as perform specific <b>SQL queries</b> on the database with user functionality
         <b>Before getting started</b>, this oracle database can only be accessed with a specific <b>VPN</b> connection by Toronto Metropolitan University.
         If you want to see this project in action, but don't have access to the VPN, please check the <a href="https://github.com/andrearcaina/fulvo/" target="_blank"><b>GitHub</b></a> 
-        README for a video demonstration, as that is the only way (that I know of) to be able to utilize this application.
+        README for a video demonstration, as that is the only way (that I know of) to be able to understand.
         Now let us get into the details of this application.
     </p> 
     
@@ -37,9 +37,9 @@ Fulvo (Fútbol) Database
     </ol>
     <p>Click on each item on the navbar to be able to visualize these requirements.</p>
 
-    <h3> Drop, Create, and Certain Queries </h3>
+    <h3> Drop, Create, Populate, Queries </h3>
     <p>
-        To drop and create the tables, as well as populate them with data, we used the <b>create.sql</b> and <b>populate.sql</b> scripts.
+        To drop and create the tables, as well as populate them with data, we used the <b>drop.sql</b>, <b>create.sql</b> and <b>populate.sql</b> scripts.
         We also created a <b>queries.sql</b> script that contains certain queries that can be executed on the database.
         You can click on each button below to execute these scripts, and see the results below.
     </p>
@@ -49,13 +49,10 @@ Fulvo (Fútbol) Database
 
 {% block content %}
 <div class="container text-center">
-    <form>
-        <button id="drop" class="btn btn-primary" type="submit">Drop Tables</button>
-        <button id="create" class="btn btn-primary" type="submit">Create Tables</button>
-        <button id="populate" class="btn btn-primary" type="submit">Populate Tables</button>
-        <button id="queries" class="btn btn-primary" type="submit">Execute Queries</button>
-    </form>
+    <button id="dropdb" class="btn btn-primary" type="submit">Drop Tables</button>
+    <button id="createdb" class="btn btn-primary" type="submit">Create Tables</button>
+    <button id="populatedb" class="btn btn-primary" type="submit">Populate Tables</button>
     
-    <div id="result" class="m-2"></div>
+    <div id="resultDB" class="m-2"></div>
 </div>
 {% endblock %}

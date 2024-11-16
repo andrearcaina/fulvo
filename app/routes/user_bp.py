@@ -1,5 +1,11 @@
 from flask import Blueprint
-from app.controllers import list_all_us, list_us_by_id, create_us, update_us, delete_us
+from app.controllers import (
+    list_all_us, 
+    list_us_by_id, 
+    create_us, 
+    update_us, 
+    delete_us
+)
 
 user_bp = Blueprint("user_bp", __name__)
 
