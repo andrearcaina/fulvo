@@ -8,15 +8,7 @@ def render_views(app):
     @app.route("/user_table")
     def user_table():
         return render_template("pages/users.html")
-
-    @app.route("/player_table")
-    def player_table():
-        return render_template("pages/players.html")
-
-    @app.route("/referee_table")
-    def referee_table():
-        return render_template("pages/referee.html")
-
+    
     @app.route("/team_table")
     def team_table():
         return render_template("pages/team.html")

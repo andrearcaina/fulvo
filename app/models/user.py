@@ -12,7 +12,8 @@ class User(db.Model):
     date_of_birth = db.Column(db.Date, nullable=False)
     role = db.Column(db.String(50), nullable=False)
 
-    def __init__(self, first_name, last_name, age, email_address, password, date_of_birth, role):
+    def __init__(self, user_id, first_name, last_name, age, email_address, password, date_of_birth, role):
+        self.user_id = user_id
         self.first_name = first_name
         self.last_name = last_name
         self.age = age

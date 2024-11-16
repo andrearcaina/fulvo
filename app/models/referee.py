@@ -6,8 +6,8 @@ class Referee(db.Model):
     referee_id = db.Column(db.Integer, db.ForeignKey("users.user_id"), primary_key=True)
     experience_level = db.Column(db.String(50), nullable=False)
 
-    def __init__(self, user_id, experience_level):
-        self.referee_id = user_id
+    def __init__(self, referee_id, experience_level):
+        self.referee_id = referee_id
         self.experience_level = experience_level
 
     def to_dict(self):

@@ -7,7 +7,8 @@ class Team(db.Model):
     team_name = db.Column(db.String(20), nullable=False)
     skill_level = db.Column(db.String(20), nullable=False)
 
-    def __init__(self, team_name, skill_level):
+    def __init__(self, team_id, team_name, skill_level):
+        self.team_id = team_id
         self.team_name = team_name
         self.skill_level = skill_level
 

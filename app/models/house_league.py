@@ -11,7 +11,8 @@ class House_League(db.Model):
     ht_score = db.Column(db.Integer, nullable=False)
     at_score = db.Column(db.Integer, nullable=False)
 
-    def __init__(self, match_date, skill_level, ht_id, at_id, ht_score, at_score):
+    def __init__(self, match_id, match_date, skill_level, ht_id, at_id, ht_score, at_score):
+        self.match_id = match_id
         self.match_date = match_date
         self.skill_level = skill_level
         self.ht_id = ht_id

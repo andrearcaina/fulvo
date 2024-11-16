@@ -16,7 +16,8 @@ class Match_Stats(db.Model):
         db.PrimaryKeyConstraint("match_id", "player_id"),
     )
 
-    def __init__(self, goals, assists, minutes_played, yellow_cards, red_cards, attempted_goals):
+    def __init__(self, match_id, goals, assists, minutes_played, yellow_cards, red_cards, attempted_goals):
+        self.match_id = match_id
         self.goals = goals
         self.assists = assists
         self.minutes_played = minutes_played
