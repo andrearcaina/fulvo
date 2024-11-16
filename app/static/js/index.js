@@ -94,7 +94,7 @@ $(document).ready(function() {
             url: ENDPOINT,
             type: "GET",
             success: function(resp) {
-                renderTable(resp, "allOutput");
+                renderTable(table, resp, "allOutput");
             },
             error: function(error) {
                 console.error(error);
@@ -109,7 +109,7 @@ $(document).ready(function() {
             url: ENDPOINT,
             type: "GET",
             success: function(resp) {
-                renderTable(resp, "searchOutput");
+                renderTable(table, resp, "searchOutput");
             },
             error: function(error) {
                 console.error(error);
@@ -136,24 +136,45 @@ $(document).ready(function() {
         });
     }
 
-    function deleteRecord(table, id) {
+    function updateRecord(table, id, data) {
+        const ENDPOINT = "/api/" + table + "/update/" + id;
+        $.ajax({
+            url: ENDPOINT,
+            type: "PUT",
+            contentType: "application/json",
+            data: JSON.stringify(data),
+            success: function(resp) {
+                console.log(resp);
+                $("#changeRowOutput").html("Cell updated successfully");
+            },
+            error: function(error) {
+                console.error(error);
+                $("#changeRowOutput").html("Error updating cell. Please try again.");
+            }
+        });
+    }
+
+    function deleteRecord(table, id, row) {
         const ENDPOINT = "/api/" + table + "/delete/" + id;
+
+        console.log(ENDPOINT);
+        
         $.ajax({
             url: ENDPOINT,
             type: "DELETE",
             success: function(resp) {
                 console.log(resp);
-                $("#deleteOutput").html("Record ID " + id + " deleted successfully");
+                row.remove();
             },
             error: function(error) {
                 console.error(error);
-                $("#deleteOutput").html("No record ID " + id + " found");
+                $("#changeRowOutput").html("Error deleting record");
             }
         });
     }
 
     // this function renders the data in a table format
-    function renderTable(data, htmlID) {        
+    function renderTable(specificTable, data, htmlID) {        
         let table = $("<table class='table table-bordered table-hover'></table>");
         let thead = $("<thead></thead>");
         let tbody = $("<tbody></tbody>");
@@ -164,6 +185,7 @@ $(document).ready(function() {
             for (let key in data[0]) {
                 trHead.append("<th>" + key + "</th>");
             }
+            trHead.append("<th>Delete</th>");
     
             thead.append(trHead);
             table.append(thead);
@@ -172,24 +194,62 @@ $(document).ready(function() {
                 let tr = $("<tr></tr>");
                 
                 for (let key in data[i]) {
-                    tr.append("<td>" + data[i][key] + "</td>");
+                    let td = $("<td contenteditable='true'></td>").text(data[i][key]);
+                    td.on("focus", function() {
+                        $(this).data("originalValue", $(this).text());
+                    });
+                    td.on("blur", function() {
+                        let newValue = $(this).text();
+                        let originalValue = $(this).data("originalValue");
+                        if (newValue !== originalValue) {
+                            let userId = $(this).closest("tr").find("td:first").text();
+                            let updateData = {};
+                            updateData[key] = newValue;
+                            updateRecord(specificTable, userId, updateData);
+                        }
+                    });
+                    tr.append(td);
+
+                    if (key === Object.keys(data[i])[Object.keys(data[i]).length - 1]) {
+                        let deleteBtn = $("<button class='btn btn-danger'>Delete</button>");
+                        deleteBtn.on("click", function() {
+                            let userId = $(this).closest("tr").find("td:first").text();
+                            deleteRecord(specificTable, userId, $(this).closest("tr"));
+                        });
+                        
+                        let tdDelete = $("<td></td>").append(deleteBtn);
+                        tr.append(tdDelete);
+                    }
                 }
-                
+
                 tbody.append(tr);
             }
-            table.append(tbody);
         } else {
             for (let key in data) {
                 trHead.append("<th>" + key + "</th>");
             }
+            
             thead.append(trHead);
             table.append(thead);
 
             for (let key in data) {
-                trBody.append("<td>" + data[key] + "</td>");
+                let td = $("<td contenteditable='true'></td>").text(data[key]);
+                td.on("focus", function() {
+                    $(this).data("originalValue", $(this).text());
+                });
+                td.on("blur", function() {
+                    let newValue = $(this).text();
+                    let originalValue = $(this).data("originalValue");
+                    if (newValue !== originalValue) {
+                        let userId = $(this).closest("tr").find("td:first").text();
+                        let updateData = {};
+                        updateData[key] = newValue;
+                        updateRecord(specificTable, userId, updateData);
+                    }
+                });
+                trBody.append(td);
             }
             tbody.append(trBody);
-            table.append(tbody);
         }
 
         table.append(tbody);

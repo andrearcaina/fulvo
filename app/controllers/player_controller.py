@@ -52,7 +52,7 @@ def delete_ps(player_id):
         g.db.delete(stat)
     
     # if a player is deleted, delete the user record
-    user = g.db.query(US).filter(US.user_id == player.user_id).first()
+    user = g.db.query(US).filter(US.user_id == player_id).first()
     if user:
         g.db.delete(user)
 

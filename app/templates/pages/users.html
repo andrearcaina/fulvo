@@ -23,6 +23,8 @@ Users, Players, Referees
     <button id="allRS" class="btn btn-primary" type="submit">Referees Table</button>
 
     <div id="allOutput" class="m-2"></div>
+
+    <div id="changeRowOutput" class="m-2"></div>
     
     <h3> Search for a Record in a Table by User ID </h3>
     <form class="row g-3">
@@ -130,38 +132,5 @@ Users, Players, Referees
     </form>
 
     <div id="createOutput" class="m-2"></div>
-
-    <h3> Update a Record in a Table </h3>
-    
-
-    <h3> Delete a Record in a Table </h3>
-    <form class="row g-3">
-        <div class="col-md-6">
-            <input type="text" id="deleteID" class="form-control" placeholder="Enter User ID">
-        </div>
-        
-        <div class="col-md-6">
-            <div class="form-check">
-                <label class="form-check-label" for="deleteUsersTable">Users</label>
-                <input class="form-check-input" type="radio" name="deleteTable" id="deleteUsersTable" value="user" checked>
-            </div>
-            
-            <div class="form-check">
-                <label class="form-check-label" for="deletePlayersTable">Players</label>
-                <input class="form-check-input" type="radio" name="deleteTable" id="deletePlayersTable" value="player">
-            </div>
-            
-            <div class="form-check">
-                <label class="form-check-label" for="deleteRefereesTable">Referees</label>
-                <input class="form-check-input" type="radio" name="deleteTable" id="deleteRefereesTable" value="referee">
-            </div>
-        </div>
-        
-        <div class="col-12">
-            <button id="delete" class="btn btn-danger" type="submit">Delete</button>
-        </div>
-    </form>
-
-    <div id="deleteOutput" class="m-2"></div>
 </div>
 {% endblock %}
