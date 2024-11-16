@@ -49,7 +49,7 @@ $(document).ready(function() {
             userData = {...userData, ...playerData};
         } else if ($("#createRole").val() === "referee") {
             const refereeData = {
-                referee_level: $("#createRefereeLevel").val()
+                experience_level: $("#createExperienceLevel").val()
             };
             userData = {...userData, ...refereeData};
         }
