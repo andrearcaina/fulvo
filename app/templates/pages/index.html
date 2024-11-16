@@ -36,24 +36,26 @@ Fulvo (Fútbol) Database
         <li>Search for specific records for each table</li>
     </ol>
     <p>Click on each item on the navbar to be able to visualize these requirements.</p>
-    
-    <h3> Quick Database Overview </h3>
-    <p>To look at each table in the Fulvo Database, select the corresponding button to see the corresponding table.</p>
+
+    <h3> Drop, Create, and Certain Queries </h3>
+    <p>
+        To drop and create the tables, as well as populate them with data, we used the <b>create.sql</b> and <b>populate.sql</b> scripts.
+        We also created a <b>queries.sql</b> script that contains certain queries that can be executed on the database.
+        You can click on each button below to execute these scripts, and see the results below.
+    </p>
+
 </div>
 {% endblock %}
 
 {% block content %}
 <div class="container text-center">
-    <button id="allUS" class="btn btn-primary" type="submit">Users Table</button>
-    <button id="allPS" class="btn btn-primary" type="submit">Players Table</button>
-    <button id="allRS" class="btn btn-primary" type="submit">Referees Table</button>
-    <button id="allTS" class="btn btn-primary" type="submit">Teams Table</button>
-    <button id="allHL" class="btn btn-primary" type="submit">House_League Table</button>
-    <button id="allMS" class="btn btn-primary" type="submit">Match_Stats Table</button>
-    <button id="allMR" class="btn btn-primary" type="submit">Match_Referee Table</button>
+    <form>
+        <button id="drop" class="btn btn-primary" type="submit">Drop Tables</button>
+        <button id="create" class="btn btn-primary" type="submit">Create Tables</button>
+        <button id="populate" class="btn btn-primary" type="submit">Populate Tables</button>
+        <button id="queries" class="btn btn-primary" type="submit">Execute Queries</button>
+    </form>
+    
+    <div id="result" class="m-2"></div>
 </div>
-
-<div id="buttonOutput" class="m-5"></div>
-
-<div id="CRUDOperations" class="m-5"></div>
 {% endblock %}
