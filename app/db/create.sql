@@ -16,14 +16,14 @@ CREATE TABLE Teams (
 );
 
 CREATE TABLE Players (
-	player_id INTEGER PRIMARY KEY REFERENCES Users(user_id),
+	player_id INTEGER PRIMARY KEY REFERENCES Users(user_id) ON DELETE CASCADE,
 	team_id INTEGER REFERENCES Teams(team_id),
 	position VARCHAR2(20) NOT NULL,
 	skill_level VARCHAR2(20) DEFAULT 'beginner' NOT NULL
 );
 
 CREATE TABLE Referees (
-	referee_id INTEGER PRIMARY KEY REFERENCES Users(user_id),
+	referee_id INTEGER PRIMARY KEY REFERENCES Users(user_id) ON DELETE CASCADE,
 	experience_level VARCHAR2(50) NOT NULL
 );
 
@@ -38,8 +38,8 @@ CREATE TABLE House_League (
 );
 
 CREATE TABLE Match_Stats (
-	match_id INTEGER REFERENCES House_League(match_id),
-	player_id INTEGER REFERENCES Players(player_id),
+	match_id INTEGER REFERENCES House_League(match_id) ON DELETE CASCADE,
+	player_id INTEGER REFERENCES Players(player_id) ON DELETE CASCADE,
 	goals INTEGER,
 	assists INTEGER,
 	minutes_played INTEGER,
@@ -50,7 +50,7 @@ CREATE TABLE Match_Stats (
 );
 
 CREATE TABLE Match_Referee (
-	match_id INTEGER REFERENCES House_League(match_id),
-	referee_id INTEGER REFERENCES Referees(referee_id),
+	match_id INTEGER REFERENCES House_League(match_id) ON DELETE CASCADE,
+	referee_id INTEGER REFERENCES Referees(referee_id) ON DELETE CASCADE,
 	PRIMARY KEY(match_id, referee_id)
 );
