@@ -3,3 +3,88 @@
 {% block heading %}
 House League
 {% endblock %}
+
+
+
+{% block preamble %}
+<div class="container mt-3">
+    <h3> Introduction </h3>
+    <p>
+        This section is dedicated to the <b>House League</b> table in the Fulvo Database.
+    </p> 
+</div>
+{% endblock %}
+
+
+
+{% block content %}
+<div class="container">
+    <h3> Overview of the House League Table </h3>
+    <div id="allOutput" class="m-2"></div>
+
+    <div id="changeRowOutput" class="m-2"></div>
+    <button id="allHL" class="btn btn-primary" type="submit">Show Table</button>
+    
+    <h3> Search for a Record in a Table by Match ID </h3>
+    <form class="row g-3" style="list-style-type: none;">
+        <div class="col-md-6 d-flex flex-column flex-md-row gap-2">
+            <input type="text" id="searchID" class="form-control mb-2 mb-md-0" placeholder="Enter Match ID">
+            <button id="search" value="house-league" class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+
+    <div id="searchOutput" class="m-2"></div>
+
+    <h3> Create a Record in the House League Table </h3>
+    <form class="row g-12">
+        <div class="col-md-3">
+
+            <div class="mb-3">
+                <label for="createMatchID" class="form-label">Match ID</label>
+                <input type="number" min="1" id="createMatchID" class="form-control" placeholder="Enter Match ID">
+            </div>
+
+            <div class="mb-3">
+                <label for="createMatchDate" class="form-label">Match Date</label>
+                <input type="date" id="createMatchDate" class="form-control", placeholder="Enter Match Date">    
+            </div>
+
+            <div class="mb-3">
+                <label for="createTeamSkill" class="form-label">Skill Level</label>
+                <select id="createTeamSkill" class="form-control">
+                    <option value="beginner">beginner</option>
+                    <option value="advanced">advanced</option>
+                    <option value="intermediate">intermediate</option>
+                </select>
+            </div>
+
+
+            <div class="mb-3">
+                <label for="createHTID" class="form-label">Select Home Team ID</label>
+                <input type="number" min="1" id="createHTID" class="form-control" placeholder="Enter Team ID">
+            </div>
+
+            <div class="mb-3">
+                <label for="createHTScore" class="form-label">Select Home Team Score</label>
+                <input type="number" min="1" id="createHTScore" class="form-control" placeholder="Enter Team ID">
+            </div>
+
+            <div class="mb-3">
+                <label for="createATID" class="form-label">Select Away Team ID</label>
+                <input type="number" min="1" id="createATID" class="form-control" placeholder="Enter Team ID">
+            </div>
+
+            <div class="mb-3">
+                <label for="createATScore" class="form-label">Select Away Team Score</label>
+                <input type="number" min="1" id="createATScore" class="form-control" placeholder="Enter Team ID">
+            </div>
+
+            <div class="col-12">
+                <button id="create" class="btn btn-primary" type="submit">Create</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="createOutput" class="m-2"></div>
+</div>
+{% endblock %}
