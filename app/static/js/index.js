@@ -36,7 +36,14 @@ $(document).ready(function() {
         event.preventDefault();
         const userId = $("#searchID").val();
         const table = $("input[name='searchTable']:checked").val();
-        getTableDataByID(table, userId);
+        if (!table) {
+            let x = $("#search").val();
+            console.log(x);
+            getTableDataByID(x, userId);
+
+        } else {
+            getTableDataByID(table, userId);
+        }
     });
     $("#create").click(function(event) {
         event.preventDefault();
@@ -82,6 +89,21 @@ $(document).ready(function() {
             
             console.log(teamData);
             createRecord("team", teamData);
+
+        } else if ($("#createMatchID").val()){ //cre
+            let hlData = {
+                match_id: $("#createMatchID").val(),
+                match_date: $("#createMatchDate").val(),
+                skill_level: $("#createTeamSkill").val(),
+                ht_id: $("#createHTID").val(),
+                at_id: $("#createATID").val(),
+                ht_score: $("#createHTScore").val(),
+                at_score: $("#createATScore").val(),
+            }
+            
+            console.log(hlData);
+            createRecord("house-league", hlData);
+
         }
         
     });
