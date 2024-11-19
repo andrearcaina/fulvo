@@ -1,7 +1,7 @@
 {% extends "components/base.html" %}
 
 {% block heading %}
-Team
+Teams
 {% endblock %}
 
 
@@ -10,7 +10,6 @@ Team
     <h3> Introduction </h3>
     <p>
         This section is dedicated to the <b>Teams</b> tables in the Fulvo Database.
-       
     </p> 
 </div>
 {% endblock %}
@@ -20,28 +19,17 @@ Team
 {% block content %}
 <div class="container">
     <h3> Overview of the Teams Table </h3>
-
     <div id="allOutput" class="m-2"></div>
 
     <div id="changeRowOutput" class="m-2"></div>
     <button id="allTS" class="btn btn-primary" type="submit">Show Table</button>
     
     <h3> Search for a Record in a Table by Team ID </h3>
-    <form class="row g-3" style= "list-style-type: none;">
-
-      <div class="col-md-6">
-          <input type="text" id="searchID" class="form-control" placeholder="Enter Team ID">
-      </div>
-
-      <div class="form-check">
-          <input class="form-check-input" type="radio" name="searchTable" id="teamsTable" value="team" checked>
-      </div>
-
-
-      <div class="col-12">
-          <button id="search" class="btn btn-primary" type="submit">Search</button>
-      </div>
-    
+    <form class="row g-3" style="list-style-type: none;">
+        <div class="col-md-6 d-flex flex-column flex-md-row gap-2">
+            <input type="text" id="searchID" class="form-control mb-2 mb-md-0" placeholder="Enter Team ID">
+            <button id="search" class="btn btn-primary" type="submit">Search</button>
+        </div>
     </form>
 
     <div id="searchOutput" class="m-2"></div>
@@ -49,28 +37,25 @@ Team
     <h3> Create a Record in the Teams Table </h3>
     <form class="row g-3">
         <div class="col-md-6">
-            <label for="createTeamID" class="form-label">Team ID</label>
-            <input type="number" min="1" id="createTeamID" class="form-control" placeholder="Enter Team ID">
-        </div>
-        
-        <div class="col-md-6">
-            <label for="createTeamName" class="form-label">Team Name</label>
-            <input type="text" id="createTeamName" class="form-control" placeholder="Enter Team Name">
-        </div>
-
-        <div class="col-md-6">
-            <label for="createTeamSkill" class="form-label">Skill Level</label>
-            <select id="createTeamSkill" class="form-control">
-              <option value="beginner">beginner</option>
-              <option value="advanced">advanced</option>
-              <option value="intermediate">intermediate</option>
-          </select>
-
-        </div>
-
-
-        <div class="col-12">
-            <button id="create" class="btn btn-primary" type="submit">Create</button>
+            <div class="mb-3">
+                <label for="createTeamID" class="form-label">Team ID</label>
+                <input type="number" min="1" id="createTeamID" class="form-control" placeholder="Enter Team ID">
+            </div>
+            <div class="mb-3">
+                <label for="createTeamName" class="form-label">Team Name</label>
+                <input type="text" id="createTeamName" class="form-control" placeholder="Enter Team Name">
+            </div>
+            <div class="mb-3">
+                <label for="createTeamSkill" class="form-label">Skill Level</label>
+                <select id="createTeamSkill" class="form-control">
+                    <option value="beginner">beginner</option>
+                    <option value="advanced">advanced</option>
+                    <option value="intermediate">intermediate</option>
+                </select>
+            </div>
+            <div class="col-12">
+                <button id="create" class="btn btn-primary" type="submit">Create</button>
+            </div>
         </div>
     </form>
 

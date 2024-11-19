@@ -21,115 +21,101 @@ Users, Players, Referees
     <button id="allUS" class="btn btn-primary" type="submit">Users Table</button>
     <button id="allPS" class="btn btn-primary" type="submit">Players Table</button>
     <button id="allRS" class="btn btn-primary" type="submit">Referees Table</button>
-
     <div id="allOutput" class="m-2"></div>
 
     <div id="changeRowOutput" class="m-2"></div>
     
     <h3> Search for a Record in a Table by User ID </h3>
-    <form class="row g-3">
-        <div class="col-md-6">
-            <input type="text" id="searchID" class="form-control" placeholder="Enter User ID">
-        </div>
-        
-        <div class="col-md-6">
-            <div class="form-check">
-                <label class="form-check-label" for="usersTable"> Users </label>
-                <input class="form-check-input" type="radio" name="searchTable" id="usersTable" value="user" checked>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column flex-md-row gap-3">
+                <input type="text" id="searchID" class="form-control mb-2 mb-md-0" placeholder="Enter User ID">
+    
+                <div class="form-check mb-2 mb-md-0">
+                    <input class="form-check-input" type="radio" name="searchTable" id="usersTable" value="user" checked>
+                    <label class="form-check-label" for="usersTable"> Users </label>
+                </div>
+            
+                <div class="form-check mb-2 mb-md-0">
+                    <input class="form-check-input" type="radio" name="searchTable" id="playersTable" value="player">
+                    <label class="form-check-label" for="playersTable"> Players </label>
+                </div>
+            
+                <div class="form-check mb-2 mb-md-0">
+                    <input class="form-check-input" type="radio" name="searchTable" id="refereesTable" value="referee">
+                    <label class="form-check-label" for="refereesTable"> Referees </label>
+                </div>
+            
+                <button id="search" class="btn btn-primary" type="submit">Search</button>
             </div>
-        
-            <div class="form-check">
-                <label class="form-check-label" for="playersTable"> Players </label>
-                <input class="form-check-input" type="radio" name="searchTable" id="playersTable" value="player">        
-            </div>
-        
-            <div class="form-check">
-                <label class="form-check-label" for="refereesTable"> Referees </label>
-                <input class="form-check-input" type="radio" name="searchTable" id="refereesTable" value="referee">
-            </div>
         </div>
-        <div class="col-12">
-            <button id="search" class="btn btn-primary" type="submit">Search</button>
-        </div>
-    </form>
+    </div>
 
     <div id="searchOutput" class="m-2"></div>
 
     <h3> Create a Record in a Table </h3>
-    <form class="row g-3">
-        <div class="col-md-6">
-            <label for="createID" class="form-label">User ID</label>
-            <input type="number" min="1" id="createID" class="form-control" placeholder="Enter User ID">
-        </div>
-        
-        <div class="col-md-6">
-            <label for="createFirstName" class="form-label">First Name</label>
-            <input type="text" id="createFirstName" class="form-control" placeholder="Enter First Name">
-        </div>
-
-        <div class="col-md-6">
-            <label for="createLastName" class="form-label">Last Name</label>
-            <input type="text" id="createLastName" class="form-control" placeholder="Enter Last Name">
-        </div>
-
-        <div class="col-md-6">
-            <label for="createAge" class="form-label">Age</label>
-            <input type="number" min="1" id="createAge" class="form-control" placeholder="Enter Age">
-        </div>
-        
-        <div class="col-md-6">
-            <label for="createEmail" class="form-label">Email</label>
-            <input type="email" id="createEmail" class="form-control" placeholder="Enter User Email">
-        </div>
-        
-        <div class="col-md-6">
-            <label for="createPassword" class="form-label">Password</label>
-            <input type="password" id="createPassword" class="form-control" placeholder="Enter User Password">
-        </div>
-
-        <div class="col-md-6">
-            <label for="createDOB" class="form-label">Date of Birth</label>
-            <input type="date" id="createDOB" class="form-control" placeholder="Enter Date of Birth">
-        </div>
-
-        <div class="col-md-6">
-            <label for="createRole" class="form-label">Role</label>
-            <select id="createRole" class="form-control">
-                <option value="player">Player</option>
-                <option value="referee">Referee</option>
-            </select>
-        </div>
-
-        <h5> Additional Fields </h5>
-        
-        <div id="playerFields" class="col-md-12" style="display: none;">
-            <div class="col-md-6">
-                <label for="createTeamID" class="form-label">Team ID</label>
-                <input type="number" min="1" id="createTeamID" class="form-control" placeholder="Enter Team ID">
-            </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d-flex flex-column">
+                <label for="createID" class="form-label">User ID</label>
+                <input type="number" min="1" id="createID" class="form-control" placeholder="Enter User ID">
+    
+                <label for="createFirstName" class="form-label">First Name</label>
+                <input type="text" id="createFirstName" class="form-control" placeholder="Enter First Name">
             
-            <div class="col-md-6">
-                <label for="createSkillLevel" class="form-label">Skill Level</label>
-                <input type="text" id="createSkillLevel" class="form-control" placeholder="Enter Skill Level">
+                <label for="createLastName" class="form-label">Last Name</label>
+                <input type="text" id="createLastName" class="form-control" placeholder="Enter Last Name">
+    
+                <label for="createAge" class="form-label">Age</label>
+                <input type="number" min="1" id="createAge" class="form-control" placeholder="Enter Age">
+    
+                <label for="createEmail" class="form-label">Email</label>
+                <input type="email" id="createEmail" class="form-control" placeholder="Enter User Email">
+    
+                <label for="createPassword" class="form-label">Password</label>
+                <input type="password" id="createPassword" class="form-control" placeholder="Enter User Password">
+    
+                <label for="createDOB" class="form-label">Date of Birth</label>
+                <input type="date" id="createDOB" class="form-control" placeholder="Enter Date of Birth">
+    
+                <label for="createRole" class="form-label">Role</label>
+                <select id="createRole" class="form-control">
+                    <option value="player">Player</option>
+                    <option value="referee">Referee</option>
+                </select>
             </div>
-            
+    
             <div class="col-md-6">
-                <label for="createPosition" class="form-label">Position</label>
-                <input type="text" id="createPosition" class="form-control" placeholder="Enter Position">
-            </div>
-        </div>
+                <h5>Additional Fields</h5>
+                
+                <div id="playerFields" class="col-md-12" style="display: none;">
+                    <div class="col-md-6">
+                        <label for="createTeamID" class="form-label">Team ID</label>
+                        <input type="number" min="1" id="createTeamID" class="form-control" placeholder="Enter Team ID">
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label for="createSkillLevel" class="form-label">Skill Level</label>
+                        <input type="text" id="createSkillLevel" class="form-control" placeholder="Enter Skill Level">
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <label for="createPosition" class="form-label">Position</label>
+                        <input type="text" id="createPosition" class="form-control" placeholder="Enter Position">
+                    </div>
+                </div>
+    
+                <div id="refereeFields" class="col-md-12" style="display: none;">
+                    <div class="col-md-6">
+                        <label for="createExperienceLevel" class="form-label">Experience Level</label>
+                        <input type="text" id="createExperienceLevel" class="form-control" placeholder="Enter Experience Level">
+                    </div>
+                </div>
 
-        <div id="refereeFields" class="col-md-12" style="display: none;">
-            <div class="col-md-6">
-                <label for="createExperienceLevel" class="form-label">Experience Level</label>
-                <input type="text" id="createExperienceLevel" class="form-control" placeholder="Enter Experience Level">
+                <button id="create" class="btn btn-primary mt-3" type="submit">Create</button>
             </div>
         </div>
-
-        <div class="col-12">
-            <button id="create" class="btn btn-primary" type="submit">Create</button>
-        </div>
-    </form>
+    </div>
 
     <div id="createOutput" class="m-2"></div>
 </div>

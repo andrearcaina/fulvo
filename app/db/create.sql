@@ -11,7 +11,7 @@ CREATE TABLE Users (
 
 CREATE TABLE Teams (
         team_id INTEGER PRIMARY KEY,
-        team_name VARCHAR2(20) NOT NULL,
+        team_name VARCHAR2(20) UNIQUE NOT NULL,
         skill_level VARCHAR2(20) NOT NULL
 );
 
