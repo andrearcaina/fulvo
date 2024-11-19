@@ -41,34 +41,49 @@ $(document).ready(function() {
     $("#create").click(function(event) {
         event.preventDefault();
 
-        let userData = {
-            user_id: $("#createID").val(),
-            first_name: $("#createFirstName").val(),
-            last_name: $("#createLastName").val(),
-            age: $("#createAge").val(),
-            email_address: $("#createEmail").val(),
-            password: $("#createPassword").val(),
-            date_of_birth: $("#createDOB").val(),
-            role: $("#createRole").val(),
-        };
+        if ($("#createID").val()){//Checks to see if UserId exists, this means that we want to create a user entry
+            let userData = {
+                user_id: $("#createID").val(),
+                first_name: $("#createFirstName").val(),
+                last_name: $("#createLastName").val(),
+                age: $("#createAge").val(),
+                email_address: $("#createEmail").val(),
+                password: $("#createPassword").val(),
+                date_of_birth: $("#createDOB").val(),
+                role: $("#createRole").val(),
+            };
 
-        // player fields
-        if ($("#createRole").val() === "player") {
-            const playerData = {
+            // player fields
+            if ($("#createRole").val() === "player") {
+                const playerData = {
+                    team_id: $("#createTeamID").val(),
+                    skill_level: $("#createSkillLevel").val(),
+                    position: $("#createPosition").val()
+                };
+                userData = {...userData, ...playerData};
+            } else if ($("#createRole").val() === "referee") {
+                const refereeData = {
+                    experience_level: $("#createExperienceLevel").val()
+                };
+                userData = {...userData, ...refereeData};
+            }
+
+            console.log(userData);
+
+            createRecord("user", userData);
+
+
+        } else if ($("#createTeamID").val()){ //Creates a team entry if teamId exists
+            let teamData = {
                 team_id: $("#createTeamID").val(),
-                skill_level: $("#createSkillLevel").val(),
-                position: $("#createPosition").val()
-            };
-            userData = {...userData, ...playerData};
-        } else if ($("#createRole").val() === "referee") {
-            const refereeData = {
-                experience_level: $("#createExperienceLevel").val()
-            };
-            userData = {...userData, ...refereeData};
+                team_name: $("#createTeamName").val(),
+                skill_level:  $("#createTeamSkill").val(),
+            }; 
+            
+            console.log(teamData);
+            createRecord("team", teamData);
         }
-        console.log(userData);
-
-        createRecord("user", userData);
+        
     });
 
     $("#delete").click(function(event) {
