@@ -13,9 +13,7 @@ def list_all_us():
     if not users:
         return jsonify({"error": "That record is not found"}), 404
     
-    us_resp = [user.to_dict() for user in users]
-
-    return jsonify(us_resp), 200
+    return jsonify([user.to_dict() for user in users]), 200
 
 def list_us_by_id(user_id):
     user = g.db.query(US).filter(US.user_id == user_id).first()
@@ -23,15 +21,11 @@ def list_us_by_id(user_id):
     if not user:
         return jsonify({"error": "That record is not found"}), 404
     
-    us_resp = user.to_dict()
-
-    return jsonify(us_resp), 200
+    return jsonify(user.to_dict()), 200
     
 def create_us():
     data = request.get_json()
     
-    print(data)
-
     if g.db.query(US).filter(US.user_id == data.get("user_id")).first():
         return jsonify({"error": "That user ID already exists"}), 400
 

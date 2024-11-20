@@ -95,8 +95,20 @@ $(document).ready(function() {
             }
 
             createRecord("match-referees", mrData);
+        } else if ($("#createMSPSID").val()){ //
+            let msData = {
+                match_id: $("#createMSID").val(),
+                player_id: $("#createMSPSID").val(),
+                goals: $("#createGoals").val(),
+                assists: $("#createAssists").val(),
+                minutes_played: $("#createMinutes").val(),
+                yellow_cards: $("#createYellowCards").val(),
+                red_cards: $("#createRedCards").val(),
+                attempted_goals: $("#createAttemptedGoals").val(),
+            }
+
+            createRecord("match-stats", msData);
         }
-        
     });
 
     // users.html

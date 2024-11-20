@@ -11,9 +11,7 @@ def list_all_mr():
     if not mr:
         return jsonify({"error": "That record is not found"}), 404
     
-    mr_resp = [m.to_dict() for m in mr]
-
-    return jsonify(mr_resp), 200
+    return jsonify([m.to_dict() for m in mr]), 200
 
 # get a record by match ID
 def list_mr_by_id(match_id):
@@ -22,9 +20,7 @@ def list_mr_by_id(match_id):
     if not mr:
         return jsonify({"error": "That record is not found"}), 404
     
-    mr_resp = mr.to_dict()
-
-    return jsonify(mr_resp), 200
+    return jsonify(mr.to_dict()), 200
 
 def create_mr():
     data = request.get_json()
@@ -60,8 +56,8 @@ def update_mr(match_id):
     
     return jsonify(match_referee.to_dict()), 200
 
-def delete_mr(match_id):
-    referee = g.db.query(MR).filter(MR.match_id == match_id).first()
+def delete_mr(match_id, referee_id):
+    referee = g.db.query(MR).filter(MR.match_id == match_id, MR.referee_id == referee_id).first()
 
     if not referee:
         return jsonify({"error": "That record is not found"}), 404

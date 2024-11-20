@@ -40,7 +40,6 @@ export function createRecord(table, data) {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function(resp) {
-            console.log(resp);
             $("#createOutput").html("Record created successfully");
         },
         error: function(error) {
@@ -59,7 +58,6 @@ function updateCellData(table, id, data) {
         contentType: "application/json",
         data: JSON.stringify(data),
         success: function(resp) {
-            console.log(resp);
             $("#changeRowOutput").html("Cell updated successfully");
         },
         error: function(error) {
@@ -70,8 +68,14 @@ function updateCellData(table, id, data) {
 }
 
 // make a DELETE request and deletes the row from the database
-export function deleteRecord(table, id, row) {
-    const ENDPOINT = "/api/" + table + "/delete/" + id;
+export function deleteRecord(table, id, id2, row) {
+    let ENDPOINT;
+
+    if (parseInt(id2) && id2.length >= 1 && !id2.includes("-")) {
+        ENDPOINT = "/api/" + table + "/delete/" + id + "/" + id2;
+    } else {
+        ENDPOINT = "/api/" + table + "/delete/" + id;
+    }
 
     console.log(ENDPOINT);
     
@@ -228,7 +232,9 @@ function appendDeleteButton(tr, key, data, specificTable) {
         let deleteBtn = $("<button class='btn btn-danger'>Delete</button>");
         deleteBtn.on("click", function() {
             let userId = $(this).closest("tr").find("td:first").text();
-            deleteRecord(specificTable, userId, $(this).closest("tr"));
+            let secondID = $(this).closest("tr").find("td:nth-child(2)").text();
+
+            deleteRecord(specificTable, userId, secondID, $(this).closest("tr"));
         });
         
         let tdDelete = $("<td></td>").append(deleteBtn);

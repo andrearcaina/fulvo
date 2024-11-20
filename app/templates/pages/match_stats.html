@@ -4,6 +4,15 @@
 Match Stats
 {% endblock %}
 
+{% block preamble %}
+<div class="container mt-3">
+    <h3> Introduction </h3>
+    <p>
+        This section is dedicated to the <b>Match Stats</b> table in the Fulvo Database.
+    </p> 
+</div>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <h3> Overview of the Match Stats Table </h3>
@@ -22,15 +31,15 @@ Match Stats
 
     <div id="searchOutput" class="m-2"></div>
 
-    <h3> Create a Record in the House League Table </h3>
+    <h3> Create a Record in the Match Stats Table </h3>
     <div class="container mt-3">
         <div class="row">
             <div class="col-md-6 mb-3">
-                <label for="createMatchID" class="form-label">Match ID</label>
-                <input type="number" min="1" id="createMatchID" class="form-control" placeholder="Enter Match ID">
+                <label for="createMSID" class="form-label">Match ID</label>
+                <input type="number" min="1" id="createMSID" class="form-control" placeholder="Enter Match ID">
             
-                <label for="createMatchDate" class="form-label">Player ID</label>
-                <input type="number" min="1" id="createMatchDate" class="form-control" placeholder="Enter Match Date">    
+                <label for="createMSPSID" class="form-label">Player ID</label>
+                <input type="number" min="1" id="createMSPSID" class="form-control" placeholder="Enter Match Date">    
             
                 <label for "createGoals" class="form-label">Goals</label>
                 <input type="number" min="0" id="createGoals" class="form-control" placeholder="Enter Goals">
@@ -46,7 +55,7 @@ Match Stats
                 <label for "createYellowCards" class="form-label">Yellow Cards</label>
                 <input type="number" min="0" id="createYellowCards" class="form-control" placeholder="Enter Yellow Cards">
 
-                <label for "createRedCards" class="form-label">Minutes Played</label>
+                <label for "createRedCards" class="form-label">Red Cards</label>
                 <input type="number" min="0" id="createRedCards" class="form-control" placeholder="Enter Red Cards">
 
                 <label for "createAttemptedGoals" class="form-label">Attempted Goals</label>

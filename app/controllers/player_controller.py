@@ -12,9 +12,7 @@ def list_all_ps():
     if not players:
         return jsonify({"error": "That record is not found"}), 404
 
-    ps_resp = [player.to_dict() for player in players]
-
-    return jsonify(ps_resp), 200
+    return jsonify([player.to_dict() for player in players]), 200
 
 def list_ps_by_id(player_id):
     player = g.db.query(PS).filter(PS.player_id == player_id).first()
@@ -22,9 +20,7 @@ def list_ps_by_id(player_id):
     if not player:
         return jsonify({"error": "That record is not found"}), 404
     
-    ps_resp = player.to_dict()
-
-    return jsonify(ps_resp), 200
+    return jsonify(player.to_dict()), 200
 
 def update_ps(player_id):
     data = request.get_json()
@@ -40,8 +36,8 @@ def update_ps(player_id):
     
     return jsonify(player.to_dict()), 200
 
-def delete_ps(player_id):
-    player = g.db.query(PS).filter(PS.player_id == player_id).first()
+def delete_ps(player_id, team_id):
+    player = g.db.query(PS).filter(PS.player_id == player_id, PS.team_id == team_id).first()
     
     if not player:
         return jsonify({"error": "That record is not found"}), 404

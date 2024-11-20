@@ -7,9 +7,7 @@ def list_all_ts():
     if not teams:
         return jsonify({"error": "That record is not found"}), 404
 
-    ts_resp = [team.to_dict() for team in teams]
-
-    return jsonify(ts_resp), 200
+    return jsonify([team.to_dict() for team in teams]), 200
 
 def list_ts_by_id(team_id):
     team = g.db.query(TS).filter(TS.team_id == team_id).first()
@@ -17,10 +15,7 @@ def list_ts_by_id(team_id):
     if not team:
         return jsonify({"error": "That record is not found"}), 404
 
-    ts_resp = team.to_dict()
-
-
-    return jsonify(ts_resp), 200
+    return jsonify(team.to_dict()), 200
 
 def create_ts():
     data = request.get_json()
