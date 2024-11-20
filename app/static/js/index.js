@@ -18,6 +18,9 @@ $(document).ready(function() {
     $("#populatedb").click(function() {
         updateDatabase("populate");
     });
+    $("#queriesdb").click(function() {
+        updateDatabase("queries");
+    });
 
     // search, delete, create button functionality 
     // (users.html, teams.html, house_league.html, match_stats.html, match_referee.html)

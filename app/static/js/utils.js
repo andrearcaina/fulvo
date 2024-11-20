@@ -5,7 +5,7 @@ export function getTableData(table) {
         url: ENDPOINT,
         type: "GET",
         success: function(resp) {
-            renderTable(table, resp, "allOutput");
+            renderModelTable(table, resp, "allOutput");
         },
         error: function(error) {
             console.error(error);
@@ -22,7 +22,7 @@ export function getTableDataByID(table, id) {
         url: ENDPOINT,
         type: "GET",
         success: function(resp) {
-            renderTable(table, resp, "searchOutput");
+            renderModelTable(table, resp, "searchOutput");
         },
         error: function(error) {
             console.error(error);
@@ -94,25 +94,25 @@ export function updateDatabase(action) {
     const ENDPOINT = "/api/menu/" + action;
     $.ajax({
         url: ENDPOINT,
-        type: "POST",
+        type: action === "queries" ? "GET" : "POST",
         success: function(resp) {
             console.log(resp);
-            $("#resultDB").html(resp.message);
+            if (action !== "queries") {
+                $("#resultDB").html(resp.message);
+            } else {
+                renderQueries(resp.results, "resultDB");
+            }
         },
         error: function(error) {
             console.error(error);
-            $("#resultDB").html("Error in changing database");
+            $("#resultDB").html("Error in executing script in database");
         }
     });
 }
 
 // this function renders the data in a table format
-export function renderTable(specificTable, data, htmlID) {        
-    let table = $("<table class='table table-bordered table-hover'></table>");
-    let thead = $("<thead></thead>");
-    let tbody = $("<tbody></tbody>");
-    let trBody = $("<tr></tr>");
-    let trHead = $("<tr></tr>");
+function renderModelTable(specificTable, data, htmlID) {        
+    let [table, thead, tbody, trHead, trBody] = initTable();
 
     if (data.length > 0) {
         for (let key in data[0]) {
@@ -162,6 +162,43 @@ export function updateRoleFields() {
         $("#playerFields").hide();
         $("#refereeFields").hide();
     }
+}
+
+// this function specifically only renders table data from the queries button in home page
+function renderQueries(data, htmlID) {
+    $("#" + htmlID).empty();
+
+    for (let i = 0; i < data.length; i++) {
+        let [table, thead, tbody, trHead, _] = initTable();
+
+        // Create table headers
+        for (let key in data[i][0]) {
+            trHead.append("<th>" + key + "</th>");
+        }
+        thead.append(trHead);
+        table.append(thead);
+
+        // Create table body
+        for (let j = 0; j < data[i].length; j++) {
+            let trBody = $("<tr></tr>");
+            for (let key in data[i][j]) {
+                trBody.append("<td>" + data[i][j][key] + "</td>");
+            }
+            tbody.append(trBody);
+        }
+        table.append(tbody);
+        $("#" + htmlID).append(table);
+    }
+}
+
+function initTable() {
+    let table = $("<table class='table table-bordered table-hover'></table>");
+    let thead = $("<thead></thead>");
+    let tbody = $("<tbody></tbody>");
+    let trHead = $("<tr></tr>");
+    let trBody = $("<tr></tr>");
+
+    return [table, thead, tbody, trHead, trBody];
 }
 
 // adds the functionality to the current cell (allows for changing the cell data)

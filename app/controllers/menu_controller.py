@@ -7,17 +7,20 @@ def execute_sql_script(file_path):
         with open(file_path, "r") as f:
             sql_script = f.read()
         
+        results = []
         with db.engine.connect() as connection:
             trans = connection.begin()
-            
             try:
                 for statement in sql_script.split(";"):
                     if statement.strip():
-                        connection.execute(text(statement))
-                trans.commit()
-                return jsonify({"message": f"{file_path.split("/")[-1]} executed successfully"}), 200
+                        result = connection.execute(text(statement.strip()))
+                        if result.returns_rows:
+                            rows = result.fetchall()
+                            results.append([dict(row._mapping) for row in rows])
+                trans.commit()                
+                return jsonify({"message": f"{file_path.split('/')[-1]} executed successfully", "results": results}), 200
             except Exception as e:
-                trans.rollback()                
+                trans.rollback()
                 return jsonify({"error": str(e)}), 500
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -30,3 +33,6 @@ def create_db():
 
 def populate_db():
     return execute_sql_script("app/db/populate.sql")
+
+def queries_db():
+    return execute_sql_script("app/db/queries.sql")
