@@ -88,13 +88,12 @@ $(document).ready(function() {
             }
             
             createRecord("house-league", hlData);
-        
         } else if ($("#createRefID").val()){ //make sure that the REF ID exists
             let mrData = {
                 match_id: $("#createMID").val(),
                 referee_id: $("#createRefID").val(),
             }
-            console.log(mrData);
+
             createRecord("match-referees", mrData);
         }
         

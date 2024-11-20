@@ -3,3 +3,62 @@
 {% block heading %}
 Match Stats
 {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h3> Overview of the Match Stats Table </h3>
+    <button id="allMS" class="btn btn-primary" type="submit">Show Table</button>
+    <div id="allOutput" class="m-2"></div>
+
+    <div id="changeRowOutput" class="m-2"></div>
+    
+    <h3> Search for a Record in a Table by Match ID </h3>
+    <form class="row g-3" style="list-style-type: none;">
+        <div class="col-md-6 d-flex flex-column flex-md-row gap-2">
+            <input type="text" id="searchID" class="form-control mb-2 mb-md-0" placeholder="Enter Match-Stats ID">
+            <button id="search" value="match-stats" class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+
+    <div id="searchOutput" class="m-2"></div>
+
+    <h3> Create a Record in the House League Table </h3>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="createMatchID" class="form-label">Match ID</label>
+                <input type="number" min="1" id="createMatchID" class="form-control" placeholder="Enter Match ID">
+            
+                <label for="createMatchDate" class="form-label">Player ID</label>
+                <input type="number" min="1" id="createMatchDate" class="form-control" placeholder="Enter Match Date">    
+            
+                <label for "createGoals" class="form-label">Goals</label>
+                <input type="number" min="0" id="createGoals" class="form-control" placeholder="Enter Goals">
+
+                <label for "createAssists" class="form-label">Assists</label>
+                <input type="number" min="0" id="createAssists" class="form-control" placeholder="Enter Assists">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for "createMinutes" class="form-label">Minutes Played</label>
+                <input type="number" min="0" id="createMinutes" class="form-control" placeholder="Enter Minutes Played">
+
+                <label for "createYellowCards" class="form-label">Yellow Cards</label>
+                <input type="number" min="0" id="createYellowCards" class="form-control" placeholder="Enter Yellow Cards">
+
+                <label for "createRedCards" class="form-label">Minutes Played</label>
+                <input type="number" min="0" id="createRedCards" class="form-control" placeholder="Enter Red Cards">
+
+                <label for "createAttemptedGoals" class="form-label">Attempted Goals</label>
+                <input type="number" min="0" id="createAttemptedGoals" class="form-control" placeholder="Enter Attempted Goals">
+
+                <div class="col-md-2 mt-3">
+                    <button id="create" class="btn btn-primary w-100" type="submit">Create</button>
+                </div>
+            </div>
+        </div>
+    
+        <div id="createOutput" class="m-2"></div>
+    </div>
+</div>
+{% endblock %}

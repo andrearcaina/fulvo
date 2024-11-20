@@ -29,7 +29,7 @@ def list_hl_by_id(match_id):
     return jsonify(hl_resp), 200
 
 
-def create_house_league():
+def create_hl():
     data = request.get_json()
     if g.db.query(HL).filter(HL.match_id == data.get("match_id")).first(): #checks to see if the match is already in the database
         return jsonify({"error": "Match ID Already Exists"}), 404
@@ -52,22 +52,7 @@ def create_house_league():
 
     return jsonify(new_entry.to_dict()), 201
 
-
-def delete_house_league(match_id):
-
-    house_league = g.db.query(HL).filter(HL.match_id == match_id).first() # finds the entry of the match id
-
-    if not house_league: # checks to see if the record is found
-         return jsonify({"error": "That record is not found"}), 404
-    
-    g.db.delete(house_league)
-    g.db.commit()
-
-    return jsonify({"message": "Record deleted successfully"}), 200
-
-
-def update_house_league(match_id):
-    
+def update_hl(match_id):
     data = request.get_json()
     house_league = g.db.query(HL).filter(HL.match_id == match_id).first()
 
@@ -81,9 +66,13 @@ def update_house_league(match_id):
 
     return jsonify({"message": "Updated record successfully"}), 200
 
+def delete_hl(match_id):
+    house_league = g.db.query(HL).filter(HL.match_id == match_id).first() # finds the entry of the match id
 
-
-
-
-
+    if not house_league: # checks to see if the record is found
+        return jsonify({"error": "That record is not found"}), 404
     
+    g.db.delete(house_league)
+    g.db.commit()
+
+    return jsonify({"message": "Record deleted successfully"}), 200

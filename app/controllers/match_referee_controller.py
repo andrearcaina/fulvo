@@ -31,12 +31,11 @@ def create_mr():
 
     #need to make sure that the match_id does not already exist in the MR table
     #if g.db.query(MR).filter(MR.match_id == data.get("match_id")).first():
-     #   return jsonify({"error": "That Match ID already exists"}), 404
-       
+    #   return jsonify({"error": "That Match ID already exists"}), 404
+    
     #make sure that match_id exists in the house league table
     if not g.db.query(HL).filter(HL.match_id == data.get("match_id")).first():
         return jsonify({"error": "Match ID does not exist in House League Table"}), 404
-   
 
     #make sure that the referee_id exists in the referee table
     if not g.db.query(RS).filter(RS.referee_id == data.get("referee_id")).first():
@@ -47,19 +46,6 @@ def create_mr():
     g.db.commit()
 
     return jsonify(new_MR.to_dict()), 201
-
-
-def delete_mr(match_id):
-    referee = g.db.query(MR).filter(MR.match_id == match_id).first()
-
-    if not referee:
-        return jsonify({"error": "That record is not found"}), 404
-    
-    g.db.delete(referee)
-    g.db.commit()
-
-    return jsonify({"message": "Record deleted successfully"}), 200
-    
 
 def update_mr(match_id):
     data = request.get_json()
@@ -73,4 +59,14 @@ def update_mr(match_id):
     g.db.commit()
     
     return jsonify(match_referee.to_dict()), 200
-          
+
+def delete_mr(match_id):
+    referee = g.db.query(MR).filter(MR.match_id == match_id).first()
+
+    if not referee:
+        return jsonify({"error": "That record is not found"}), 404
+    
+    g.db.delete(referee)
+    g.db.commit()
+
+    return jsonify({"message": "Record deleted successfully"}), 200

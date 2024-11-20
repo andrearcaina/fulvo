@@ -22,8 +22,7 @@ def list_ts_by_id(team_id):
 
     return jsonify(ts_resp), 200
 
-
-def create_team():
+def create_ts():
     data = request.get_json()
 
     if g.db.query(TS).filter(TS.team_id == data.get("team_id")).first():
@@ -40,20 +39,7 @@ def create_team():
 
     return jsonify(new_team.to_dict()), 201
 
-
-def delete_team(team_id):
-    team = g.db.query(TS).filter(TS.team_id == team_id).first()
-
-    if not team:
-        return jsonify({"error": "That record is not found"}), 404
-
-    g.db.delete(team)
-    g.db.commit()
-     
-    return jsonify({"message": "Record deleted successfully"}), 200
-
-
-def update_team(team_id):
+def update_ts(team_id):
     data = request.get_json()
     team = g.db.query(TS).filter(TS.team_id == team_id).first()
 
@@ -67,3 +53,13 @@ def update_team(team_id):
 
     return jsonify({"message": "Updated record successfully"}), 200
 
+def delete_ts(team_id):
+    team = g.db.query(TS).filter(TS.team_id == team_id).first()
+
+    if not team:
+        return jsonify({"error": "That record is not found"}), 404
+
+    g.db.delete(team)
+    g.db.commit()
+    
+    return jsonify({"message": "Record deleted successfully"}), 200
