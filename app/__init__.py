@@ -1,8 +1,8 @@
 from flask import Flask, g
 from app.config import Config
-from app.database import db, init_db
-from app.routes import register_blueprints
-from app.views import register_views
+from app.database import init_db
+from app.routes import handle_routes
+from app.views import serve_views
 
 def init_app():
     app = Flask(__name__)
@@ -14,18 +14,9 @@ def init_app():
     # initialize the database with the app and register the blueprints (routes) of the app
     try:
         init_db(app)
-        register_blueprints(app)
-        register_views(app)
+        handle_routes(app)
+        serve_views(app)
     except Exception as e:
         print(f"An error occurred: {e}")
-
-    @app.before_request
-    def before_request():
-        g.db = db.session
-
-    @app.teardown_appcontext
-    def shutdown_session(exception=None):
-        if hasattr(g, "db"):
-            g.db.close()
 
     return app

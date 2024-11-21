@@ -3,7 +3,6 @@ from app.models import (
     House_League as HL,
     Team as TS
 )
-
 from datetime import datetime
 
 # get all records

@@ -8,7 +8,7 @@ from .match_referee_bp import mr_bp
 from .house_league_bp import hl_bp
 from .menu_bp import menu_bp
 
-def register_blueprints(app):
+def handle_routes(app):
     api_bp = Blueprint("api", __name__, url_prefix="/api")
 
     api_bp.register_blueprint(player_bp, url_prefix="/player")
@@ -22,4 +22,4 @@ def register_blueprints(app):
 
     app.register_blueprint(api_bp)
 
-__all__ = ["register_blueprints"]
+__all__ = ["handle_routes"]

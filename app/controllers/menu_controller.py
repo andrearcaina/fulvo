@@ -26,13 +26,13 @@ def execute_sql_script(file_path):
         return jsonify({"error": str(e)}), 500
 
 def drop_db():
-    return execute_sql_script("app/db/drop.sql")
+    return execute_sql_script("app/database/drop.sql")
 
 def create_db():
-    return execute_sql_script("app/db/create.sql")
+    return execute_sql_script("app/database/create.sql")
 
 def populate_db():
-    return execute_sql_script("app/db/populate.sql")
+    return execute_sql_script("app/database/populate.sql")
 
 def queries_db():
-    return execute_sql_script("app/db/queries.sql")
+    return execute_sql_script("app/database/queries.sql")
