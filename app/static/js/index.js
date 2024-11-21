@@ -43,7 +43,7 @@ $(document).ready(function() {
 
         if ($("#createUserID").val()){
             let userData = {
-                user_id: $("#createID").val(),
+                user_id: $("#createUserID").val(),
                 first_name: $("#createFirstName").val(),
                 last_name: $("#createLastName").val(),
                 age: $("#createAge").val(),
